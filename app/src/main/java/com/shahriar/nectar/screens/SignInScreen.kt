@@ -26,7 +26,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -40,6 +39,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.shahriar.nectar.R
+import com.shahriar.nectar.components.BottomBg
+import com.shahriar.nectar.route.Screens
 
 @Composable
 fun SignInScreen(navController: NavHostController) {
@@ -61,6 +62,7 @@ fun SignInScreen(navController: NavHostController) {
                 .fillMaxWidth()
                 .height(374.15.dp)
         )
+
         Column(
             modifier = Modifier
                 .fillMaxSize(),
@@ -76,7 +78,6 @@ fun SignInScreen(navController: NavHostController) {
             )
             Spacer(modifier = Modifier.height(8.dp))
 
-            // Phone number input
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier
@@ -90,6 +91,7 @@ fun SignInScreen(navController: NavHostController) {
                 )
                 Spacer(modifier = Modifier.width(8.dp))
 
+                // Navigate to screen when focused
                 BasicTextField(
                     value = text,
                     onValueChange = { newText -> text = newText },
@@ -98,7 +100,7 @@ fun SignInScreen(navController: NavHostController) {
                         .onFocusChanged { focusState ->
                             if (focusState.isFocused && !isFocused) {
                                 isFocused = true
-                                //navController.navigate(Screen.MobileNumberScreen.route) // Navigate to another screen when focused
+                                navController.navigate(Screens.PhoneNumberInputScreen.route)
                             }
                         },
                     textStyle = TextStyle(color = Color.Black),
@@ -111,7 +113,7 @@ fun SignInScreen(navController: NavHostController) {
                 thickness = 1.dp,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(start = 20.dp, top = 10.dp, end = 20.dp, bottom = 30.dp)
+                    .padding(start = 20.dp, top = 10.dp, end = 20.dp, bottom = 0.dp)
             )
 
 //            Social media buttons
@@ -120,6 +122,8 @@ fun SignInScreen(navController: NavHostController) {
                     .fillMaxWidth(),
                 contentAlignment = Alignment.Center
             ) {
+                BottomBg()
+
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.Center
@@ -127,10 +131,9 @@ fun SignInScreen(navController: NavHostController) {
                     Text(
                         text = "Or connect with social media",
                         color = colorResource(id = R.color.nectar_gray_text_color)
-
                     )
 
-                    Spacer(modifier = Modifier.height(30.dp))
+                    Spacer(modifier = Modifier.height(50.dp))
 
                     SocialMediaButton(
                         text = "Continue with Google",
@@ -167,7 +170,6 @@ fun SocialMediaButton(text: String, backgroundColor: Color, icon: Int) {
             painter = painterResource(id = icon),
             contentDescription = null
         )
-//            Spacer(modifier = Modifier.width(20.dp))
         Row(
             modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically,

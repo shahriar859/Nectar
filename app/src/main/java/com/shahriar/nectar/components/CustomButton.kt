@@ -13,7 +13,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun GlobalButton(
+fun CustomButton(
     text: String,
     onClick: () -> Unit,
 ) {
@@ -24,7 +24,7 @@ fun GlobalButton(
         ),
         shape = RoundedCornerShape(19.dp),
         modifier = Modifier
-            .fillMaxWidth(0.9f) // Make the button 80% of the width
+            .fillMaxWidth() // Make the button 80% of the width
             .height(65.dp)
     ) {
         Text(text = text, color = Color.White, fontSize = 16.sp)

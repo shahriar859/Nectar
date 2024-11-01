@@ -6,7 +6,11 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -22,7 +26,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.shahriar.nectar.R
-import com.shahriar.nectar.components.GlobalButton
+import com.shahriar.nectar.components.CustomButton
 import com.shahriar.nectar.route.Screens
 
 @Composable
@@ -50,10 +54,9 @@ fun OnboardingScreen(navController: NavHostController) {
                     .padding(bottom = 60.dp)
 
             ) {
-                val logoPainter = painterResource(id = R.drawable.logo)
                 Image(
                     modifier = Modifier.padding(bottom = 16.dp),
-                    painter = logoPainter,
+                    painter = painterResource(id = R.drawable.logo),
                     contentDescription = "Nectar Logo"
                 )
                 Text(
@@ -76,12 +79,20 @@ fun OnboardingScreen(navController: NavHostController) {
                         .padding(bottom = 30.dp)
                 )
 
-                GlobalButton(
-                    text = "Get Started",
+                Button(
                     onClick = {
                         navController.navigate(Screens.SignInScreen.route)
-                    }
-                )
+                    },
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color(0xFF53B175)
+                    ),
+                    shape = RoundedCornerShape(19.dp),
+                    modifier = Modifier
+                        .fillMaxWidth(0.9f) // Make the button 80% of the width
+                        .height(65.dp)
+                ) {
+                    Text(text = "Get Started", color = Color.White, fontSize = 16.sp)
+                }
             }
         }
     }

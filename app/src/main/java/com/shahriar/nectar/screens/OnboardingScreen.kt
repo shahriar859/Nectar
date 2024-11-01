@@ -26,7 +26,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.shahriar.nectar.R
-import com.shahriar.nectar.components.CustomButton
 import com.shahriar.nectar.route.Screens
 
 @Composable
@@ -88,7 +87,7 @@ fun OnboardingScreen(navController: NavHostController) {
                     ),
                     shape = RoundedCornerShape(19.dp),
                     modifier = Modifier
-                        .fillMaxWidth(0.9f) // Make the button 80% of the width
+                        .fillMaxWidth(0.9f)
                         .height(65.dp)
                 ) {
                     Text(text = "Get Started", color = Color.White, fontSize = 16.sp)

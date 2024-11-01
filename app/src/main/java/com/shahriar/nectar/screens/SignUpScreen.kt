@@ -1,6 +1,5 @@
 package com.shahriar.nectar.screens
 
-import android.content.Intent
 import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.Image
@@ -16,13 +15,10 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -65,7 +61,6 @@ fun SignUpScreen(navController: NavHostController) {
     val context = LocalContext.current
     val focusManager = LocalFocusManager.current    // Initialize FocusManager for managing focus and keyboard dismissal
 
-//    UserInputs Managements
     var userNameText by remember { mutableStateOf(TextFieldValue("")) }
     var userEmailText by remember { mutableStateOf(TextFieldValue("")) }
     var userPasswordText by remember { mutableStateOf(TextFieldValue("")) }
@@ -129,7 +124,7 @@ fun SignUpScreen(navController: NavHostController) {
                 singleLine = true,
                 onValueChange = { newUserText ->
                     if (newUserText.text.length <= 30) {
-                        userNameText= newUserText // Only update the text if it's within the limit
+                        userNameText= newUserText
                     }
                 },
                 modifier = Modifier
@@ -161,7 +156,7 @@ fun SignUpScreen(navController: NavHostController) {
                 singleLine = true,
                 onValueChange = { newEmailText ->
                     if (newEmailText.text.length <= 25) {
-                        userEmailText = newEmailText // Only update the text if it's within the limit
+                        userEmailText = newEmailText
                     }
                 },
                 modifier = Modifier
@@ -214,7 +209,6 @@ fun SignUpScreen(navController: NavHostController) {
             )
             CustomDivider()
 
-//          Bottom View As a Column
             Column(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalAlignment = Alignment.CenterHorizontally,
@@ -233,11 +227,10 @@ fun SignUpScreen(navController: NavHostController) {
                         Log.d("Privacy", "Privacy Policy clicked")
                     }
                 )
-
                 Spacer(modifier = Modifier.height(20.dp))
 
                 CustomButton(
-                    text = "Signup",
+                    text = "Sign Up",
                     onClick = {
                         when {
                             userNameText.text.isEmpty() && userEmailText.text.isEmpty() && userPasswordText.text.isEmpty() -> {

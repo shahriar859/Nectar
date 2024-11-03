@@ -48,16 +48,15 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavHostController
+import androidx.navigation.NavController
 import com.shahriar.nectar.R
 import com.shahriar.nectar.components.CustomButton
 import com.shahriar.nectar.components.CustomDivider
 import com.shahriar.nectar.components.CustomPasswordView
 import com.shahriar.nectar.route.Screens
 
-
 @Composable
-fun SignUpScreen(navController: NavHostController) {
+fun SignUpScreen(navController: NavController) {
     val context = LocalContext.current
     val focusManager = LocalFocusManager.current    // Initialize FocusManager for managing focus and keyboard dismissal
 
@@ -88,13 +87,12 @@ fun SignUpScreen(navController: NavHostController) {
             modifier = Modifier
                 .fillMaxWidth()
                 .align(Alignment.BottomCenter)
-                .padding(bottom = 5.dp)
         )
 
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(start = 24.dp, end = 24.dp, top = 200.dp)
+                .padding(start = 24.dp, end = 24.dp, top = 200.dp )
                 .align(Alignment.Center)
         ) {
             Text(
@@ -204,7 +202,6 @@ fun SignUpScreen(navController: NavHostController) {
                 passwordText = userPasswordText,
                 onTextChanged = { newText ->
                     userPasswordText = newText
-
                 }
             )
             CustomDivider()
@@ -244,7 +241,7 @@ fun SignUpScreen(navController: NavHostController) {
                                 Toast.makeText(context, "Email is invalid.", Toast.LENGTH_SHORT).show()
                             }
                             userPasswordText.text.length < 8 -> {
-                                Toast.makeText(context, "User Password is too short", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(context, "User Password must be at least 8 characters", Toast.LENGTH_SHORT).show()
                             }
                             else -> {
                                 //navController.navigate(Screens.HomeScreen.route)

@@ -26,19 +26,18 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavHostController
+import androidx.navigation.NavController
 import com.shahriar.nectar.R
 import com.shahriar.nectar.components.BottomBg
-import com.shahriar.nectar.components.CustomButton
 import com.shahriar.nectar.components.CustomDropDown
 import com.shahriar.nectar.components.TopBg
 import com.shahriar.nectar.route.Screens
 
 @Composable
-fun MapScreen(navController: NavHostController) {
+fun MapScreen(navController: NavController) {
     val zoneList = listOf("Types of your zone", "Bashundhara R/A", "Gulshan", "Baridhara")
     val zoneCurrentValue = remember { mutableStateOf(zoneList[0]) }
-    val areaList = listOf("Types of your area", "Block A", "Block B", "Block C", "Block D", "Block E", "Block F", "Block G")
+    val areaList = listOf("Types of your area", "Block A", "Block B", "Block C")
     val areaCurrentValue = remember { mutableStateOf(areaList[0]) }
 
     Column(
@@ -133,4 +132,6 @@ fun MapScreen(navController: NavHostController) {
             }
         }
     }
+
+
 }

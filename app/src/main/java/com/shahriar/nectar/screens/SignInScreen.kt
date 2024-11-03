@@ -37,13 +37,13 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavHostController
+import androidx.navigation.NavController
 import com.shahriar.nectar.R
 import com.shahriar.nectar.components.BottomBg
 import com.shahriar.nectar.route.Screens
 
 @Composable
-fun SignInScreen(navController: NavHostController) {
+fun SignInScreen(navController: NavController) {
     var text by remember { mutableStateOf(TextFieldValue("+880")) }
     var isFocused by remember { mutableStateOf(false) }
 

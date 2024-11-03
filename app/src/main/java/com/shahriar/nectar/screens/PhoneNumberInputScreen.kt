@@ -2,6 +2,7 @@ package com.shahriar.nectar.screens
 
 import android.widget.Toast
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
@@ -13,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.colorResource
@@ -26,7 +28,7 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavHostController
+import androidx.navigation.NavController
 import com.shahriar.nectar.components.TopBg
 import com.shahriar.nectar.components.FloatingNextButton
 import com.shahriar.nectar.R
@@ -34,7 +36,7 @@ import com.shahriar.nectar.components.CustomDivider
 import com.shahriar.nectar.route.Screens
 
 @Composable
-fun PhoneNumberInputScreen(navController: NavHostController) {
+fun PhoneNumberInputScreen(navController: NavController) {
     var phoneNumberText by remember { mutableStateOf(TextFieldValue("+880")) }
     val focusManager = LocalFocusManager.current    // Initialize FocusManager for managing focus and keyboard dismissal
     val focusRequester = remember { FocusRequester() }     // Initialize FocusRequester
@@ -51,6 +53,12 @@ fun PhoneNumberInputScreen(navController: NavHostController) {
 
     Box(
         modifier = Modifier.fillMaxSize()
+            .pointerInput(Unit) {
+                // Clear focus when the screen is touched without showing visual effects
+                detectTapGestures(onTap = {
+                    focusManager.clearFocus()
+                })
+            }
     ) {
         TopBg(navController)
         Box(
@@ -95,7 +103,7 @@ fun PhoneNumberInputScreen(navController: NavHostController) {
                         onValueChange = { newPhoneNoText ->
                             if (newPhoneNoText.text.length <= 14) {
                                 phoneNumberText = newPhoneNoText.copy(
-                                    selection = TextRange(newPhoneNoText.text.length) // Cursor at end
+                                    //selection = TextRange(newPhoneNoText.text.length) // Cursor at end
                                 )
                             }// Only update the text if it's within the limit
                         },
@@ -137,6 +145,7 @@ fun PhoneNumberInputScreen(navController: NavHostController) {
                         }
 
                         android.util.Patterns.PHONE.matcher(phoneNumberText.text).matches() -> {
+                            focusManager.clearFocus()
                             navController.navigate(Screens.VerificationScreen.route)
                         }
 

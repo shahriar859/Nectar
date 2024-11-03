@@ -9,6 +9,7 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="nectar_primary_color">#53B175</color>
+    <color name="nectar_secondary_color">#9FF8BF</color>
     <color name="nectar_gray_color">#E2E2E2</color>
     <color name="nectar_gray_text_color">#828282</color>
     <color name="google_btn_background_color">#5383EC</color>

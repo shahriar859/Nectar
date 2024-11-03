@@ -1,6 +1,6 @@
 package com.shahriar.nectar.screens
 
-import androidx.compose.foundation.background
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -12,7 +12,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
@@ -28,6 +27,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.colorResource
@@ -37,7 +37,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavHostController
+import androidx.navigation.NavController
 import com.shahriar.nectar.R
 import com.shahriar.nectar.components.TopBg
 import com.shahriar.nectar.components.CustomDivider
@@ -45,7 +45,7 @@ import com.shahriar.nectar.components.FloatingNextButton
 import com.shahriar.nectar.route.Screens
 
 @Composable
-fun VerificationScreen(navController: NavHostController) {
+fun VerificationScreen(navController: NavController) {
     var otpCode by remember { mutableStateOf("") }
     val focusRequester = remember { FocusRequester() }
     val focusManager = LocalFocusManager.current
@@ -57,6 +57,12 @@ fun VerificationScreen(navController: NavHostController) {
 
     Box(
         modifier = Modifier.fillMaxSize()
+            .pointerInput(Unit) {
+                // Clear focus when the screen is touched without showing visual effects
+                detectTapGestures(onTap = {
+                    focusManager.clearFocus()
+                })
+            }
     ) {
         TopBg(navController)     // Get the reusable TopBackground Component
 
@@ -166,6 +172,7 @@ fun VerificationScreen(navController: NavHostController) {
             ) {
                 FloatingNextButton(
                     onClick = {
+                        focusManager.clearFocus()
                         navController.navigate(Screens.MapScreen.route)
                     }
                 )

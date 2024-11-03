@@ -24,18 +24,17 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavHostController
+import androidx.navigation.NavController
 import com.shahriar.nectar.R
 import com.shahriar.nectar.route.Screens
 
 @Composable
-fun OnboardingScreen(navController: NavHostController) {
+fun OnboardingScreen(navController: NavController) {
     Surface(
         modifier = Modifier.fillMaxSize()
     ) {
-        val painter = painterResource(id = R.drawable.onboarding)
         Image(
-            painter = painter,
+            painter = painterResource(id = R.drawable.onboarding),
             contentDescription = "OnBoarding Screen background picture",
             modifier = Modifier.fillMaxSize(),
             contentScale = ContentScale.Crop

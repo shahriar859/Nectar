@@ -1,16 +1,21 @@
 package com.shahriar.nectar.components
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.ExposedDropdownMenuDefaults
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.MenuItemColors
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
@@ -70,15 +75,30 @@ fun CustomDropDown(
 
             DropdownMenu(
                 expanded = isExpanded.value,
-                onDismissRequest = { isExpanded.value = false }
+                onDismissRequest = { isExpanded.value = false },
+                modifier = Modifier
+                    .background(colorResource(id = R.color.white)),
             ) {
                 itemList.forEach { item ->
                     DropdownMenuItem(
-                        text = { Text(text = item) },
+                        text = {
+                            Text(
+                                text = item,
+                            )
+                        },
                         onClick = {
                             selectedItem.value = item
                             isExpanded.value = false
-                        }
+                        },
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .background(
+                                color = if (selectedItem.value == item) {
+                                    colorResource(id = R.color.nectar_secondary_color)
+                                } else {
+                                    colorResource(id = R.color.white)
+                                }
+                            )
                     )
                 }
             }

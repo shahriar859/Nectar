@@ -117,7 +117,7 @@ fun MapScreen(navController: NavController) {
             ) {
                 Button(
                     onClick = {
-                        navController.navigate(Screens.LogInScreen.route)
+                        //navController.navigate(Screens.HomeInScreen.route)
                     },
                     colors = ButtonDefaults.buttonColors(
                         containerColor = Color(0xFF53B175)

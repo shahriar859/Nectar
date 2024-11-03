@@ -129,59 +129,29 @@ fun SignInScreen(navController: NavController) {
                     verticalArrangement = Arrangement.Center
                 ) {
                     Text(
-                        text = "Or connect with social media",
+                        text = "Or Login",
                         color = colorResource(id = R.color.nectar_gray_text_color)
                     )
 
                     Spacer(modifier = Modifier.height(50.dp))
 
-                    SocialMediaButton(
-                        text = "Continue with Google",
-                        backgroundColor = colorResource(id = R.color.google_btn_background_color), // Google blue color
-                        icon = R.drawable.google // replace with a Google icon
-                    )
+                    Button(
+                        onClick = {
+                            navController.navigate(Screens.LogInScreen.route)
+                        },
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = Color(0xFF53B175)
+                        ),
+                        shape = RoundedCornerShape(19.dp),
+                        modifier = Modifier
+                            .fillMaxWidth(0.9f) // Make the button 80% of the width
+                            .height(65.dp)
+                    ) {
+                        Text(text = "Login", color = Color.White, fontSize = 16.sp)
+                    }
 
-                    Spacer(modifier = Modifier.height(20.dp))
-
-                    SocialMediaButton(
-                        text = "Continue with Facebook",
-                        backgroundColor = colorResource(id = R.color.fb_btn_background_color), // Facebook blue color
-                        icon = R.drawable.facebook // replace with a Facebook icon
-                    )
                 }
             }
-        }
-    }
-}
-
-// Social Media Buttons handling
-@Composable
-fun SocialMediaButton(text: String, backgroundColor: Color, icon: Int) {
-    Button(
-        onClick = { /* Handle click */ },
-        colors = ButtonDefaults.buttonColors(backgroundColor),
-        modifier = Modifier
-            .fillMaxWidth(0.9f)
-            .height(67.dp),
-        shape = RoundedCornerShape(19.dp)
-    ) {
-
-        Icon(
-            painter = painterResource(id = icon),
-            contentDescription = null
-        )
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.Center
-        )
-        {
-            Text(
-                text = text,
-                color = Color.White,
-                textAlign = TextAlign.Center,
-                fontSize = 16.sp
-            )
         }
     }
 }

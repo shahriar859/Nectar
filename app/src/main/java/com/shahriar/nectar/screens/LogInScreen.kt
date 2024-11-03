@@ -26,6 +26,7 @@ import com.shahriar.nectar.components.CustomButton
 import com.shahriar.nectar.components.CustomDivider
 import com.shahriar.nectar.components.CustomEmailView
 import com.shahriar.nectar.components.CustomPasswordView
+import com.shahriar.nectar.components.rememberImeState
 import com.shahriar.nectar.route.Screens
 
 @OptIn(ExperimentalLayoutApi::class)
@@ -35,7 +36,7 @@ fun LogInScreen(navController: NavController) {
     val focusManager = LocalFocusManager.current
     var userEmailText by remember { mutableStateOf(TextFieldValue("")) }
     var userPasswordText by remember { mutableStateOf(TextFieldValue("")) }
-
+    val isImeVisible by rememberImeState()
 
 
     Box(
@@ -52,7 +53,7 @@ fun LogInScreen(navController: NavController) {
             painter = painterResource(id = R.drawable.topbgtwo),
             contentScale = ContentScale.Crop,
             contentDescription = "Top Bar Image",
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth().height(if (isImeVisible) 0.dp else 250.dp)
         )
         Image(
             painter = painterResource(id = R.drawable.bottombg),
@@ -71,7 +72,7 @@ fun LogInScreen(navController: NavController) {
                 .align(Alignment.Center),
         ) {
             // Top spacing
-            Spacer(modifier = Modifier.height(250.dp))
+            Spacer(modifier = Modifier.height(if (isImeVisible) 100.dp else 250.dp))
 
             // Main content
             Column(
@@ -175,6 +176,7 @@ fun LogInScreen(navController: NavController) {
                             fontWeight = FontWeight.Bold,
                             color = colorResource(id = R.color.nectar_primary_color),
                             modifier = Modifier.clickable {
+                                focusManager.clearFocus()
                                 navController.navigate(Screens.SignUpScreen.route)
                             }
                         )
@@ -187,3 +189,4 @@ fun LogInScreen(navController: NavController) {
         }
     }
 }
+

@@ -265,7 +265,7 @@ fun SignUpScreen(navController: NavController) {
                                 }
 
                                 else -> {
-                                    //navController.navigate(Screens.HomeScreen.route)
+                                    navController.navigate(Screens.MapScreen.route)
                                 }
                             }
                         }

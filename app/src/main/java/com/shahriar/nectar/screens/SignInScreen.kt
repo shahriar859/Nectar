@@ -40,6 +40,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.shahriar.nectar.R
 import com.shahriar.nectar.components.BottomBg
+import com.shahriar.nectar.components.CustomButton
 import com.shahriar.nectar.route.Screens
 
 @Composable
@@ -63,11 +64,13 @@ fun SignInScreen(navController: NavController) {
                 .height(374.15.dp)
         )
 
+
         Column(
             modifier = Modifier
                 .fillMaxSize(),
             horizontalAlignment = Alignment.Start
         ) {
+            Spacer(modifier = Modifier.height(50.dp))
             Text(
                 text = "Get your groceries\nwith nectar",
                 fontSize = 25.sp,
@@ -120,35 +123,27 @@ fun SignInScreen(navController: NavController) {
             Box(
                 modifier = Modifier
                     .fillMaxWidth(),
-                contentAlignment = Alignment.Center
             ) {
                 BottomBg()
 
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.Center
+                    modifier = Modifier
+                        .padding(horizontal = 20.dp),
                 ) {
+                    Spacer(modifier = Modifier.height(20.dp))
                     Text(
-                        text = "Or Login",
+                        text = "Or",
                         color = colorResource(id = R.color.nectar_gray_text_color)
                     )
+                    Spacer(modifier = Modifier.height(20.dp))
 
-                    Spacer(modifier = Modifier.height(50.dp))
-
-                    Button(
+                    CustomButton(
+                        text = "Login",
                         onClick = {
                             navController.navigate(Screens.LogInScreen.route)
                         },
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = Color(0xFF53B175)
-                        ),
-                        shape = RoundedCornerShape(19.dp),
-                        modifier = Modifier
-                            .fillMaxWidth(0.9f) // Make the button 80% of the width
-                            .height(65.dp)
-                    ) {
-                        Text(text = "Login", color = Color.White, fontSize = 16.sp)
-                    }
+                    )
 
                 }
             }

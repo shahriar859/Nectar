@@ -31,6 +31,7 @@ import com.shahriar.nectar.R
 import com.shahriar.nectar.components.BottomBg
 import com.shahriar.nectar.components.CustomDropDown
 import com.shahriar.nectar.components.TopBg
+import com.shahriar.nectar.route.BottomNavItem
 import com.shahriar.nectar.route.Screens
 
 @Composable
@@ -117,7 +118,7 @@ fun MapScreen(navController: NavController) {
             ) {
                 Button(
                     onClick = {
-                        //navController.navigate(Screens.HomeInScreen.route)
+                        navController.navigate(Screens.HomeScreen.route)
                     },
                     colors = ButtonDefaults.buttonColors(
                         containerColor = Color(0xFF53B175)

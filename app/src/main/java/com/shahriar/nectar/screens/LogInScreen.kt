@@ -157,7 +157,7 @@ fun LogInScreen(navController: NavController) {
                                     Toast.makeText(context, "User Password must be at least 8 character", Toast.LENGTH_SHORT).show()
                                 }
                                 else -> {
-                                    //navController.navigate(Screens.HomeScreen.route)
+                                    navController.navigate(Screens.HomeScreen.route)
                                 }
                             }
                         }

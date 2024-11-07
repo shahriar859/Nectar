@@ -13,9 +13,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
-import androidx.compose.material3.ExposedDropdownMenuDefaults
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.MenuItemColors
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
@@ -68,7 +65,7 @@ fun CustomDropDown(
                 contentAlignment = Alignment.CenterEnd
             ) {
                 Image(
-                    painter = painterResource(id = R.drawable.dropdown_arrow),
+                    painter = painterResource(id = R.drawable.ic_dropdown_arrow),
                     contentDescription = "Dropdown Arrow"
                 )
             }

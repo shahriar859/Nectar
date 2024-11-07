@@ -41,7 +41,7 @@ fun SplashScreen(navController: NavController) {
             verticalArrangement = Arrangement.Center
         ) {
             Image(
-                painter = painterResource(id = R.drawable.splash_logo),
+                painter = painterResource(id = R.drawable.logo_splash),
                 contentDescription = "Nectar Logo",
                 modifier = Modifier.height(64.dp).width(268.dp)
             )

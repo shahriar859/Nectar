@@ -67,7 +67,7 @@ fun CustomPasswordView(
                 ) {
                     Icon(
                         painter = painterResource(
-                            id = if (passwordVisible) R.drawable.eyeon else R.drawable.eyeoff
+                            id = if (passwordVisible) R.drawable.ic_eye_on else R.drawable.ic_eye_off
                         ),
                         contentDescription = if (passwordVisible) "Hide password" else "Show password",
                         Modifier.size(20.dp),

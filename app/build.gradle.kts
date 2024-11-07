@@ -63,9 +63,13 @@ dependencies {
     //others
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)
+    implementation (libs.androidx.hilt.navigation.compose)
 
     implementation (libs.androidx.navigation.compose)
-    implementation ("androidx.hilt:hilt-navigation-compose:1.0.0")
+    implementation (libs.accompanist.pager)
+    implementation (libs.accompanist.pager.indicators)
+    implementation (libs.accompanist.coil)
+
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.2")
     implementation("io.coil-kt.coil3:coil-compose:3.0.0-rc01")
 

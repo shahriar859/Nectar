@@ -31,7 +31,6 @@ import com.shahriar.nectar.R
 import com.shahriar.nectar.components.BottomBg
 import com.shahriar.nectar.components.CustomDropDown
 import com.shahriar.nectar.components.TopBg
-import com.shahriar.nectar.route.BottomNavItem
 import com.shahriar.nectar.route.Screens
 
 @Composable
@@ -63,7 +62,7 @@ fun MapScreen(navController: NavController) {
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Image(
-                        painter = painterResource(id = R.drawable.map),
+                        painter = painterResource(id = R.drawable.ic_map),
                         contentDescription = "Map Icon",
                     )
                     Spacer(modifier = Modifier.height(50.dp))

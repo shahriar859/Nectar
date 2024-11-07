@@ -39,7 +39,7 @@ fun TopBg(navController: NavController) {
                 .padding(top = 50.dp, start = 5.dp)
         ) {
             Image(
-                painter = painterResource(id = R.drawable.backicon),
+                painter = painterResource(id = R.drawable.ic_back),
                 contentDescription = "Back Icon"
             )
         }

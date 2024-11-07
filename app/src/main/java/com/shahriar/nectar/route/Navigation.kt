@@ -6,9 +6,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.shahriar.nectar.components.BottomNavigation
 import com.shahriar.nectar.screens.CartScreen
 import com.shahriar.nectar.screens.ExploreScreen
 import com.shahriar.nectar.screens.FavouriteScreen
@@ -54,25 +56,26 @@ fun Navigation() {
             SignUpScreen(navController)
         }
         composable(route = Screens.HomeScreen.route) {
-            HomeScreen()
+            HomeScreen(navController)
         }
     }
 }
 
+
 @Composable
-fun HomeScreen() {
-    val navController = rememberNavController()
+fun HomeScreen(rootNavController: NavController) {
+    val bottomNavController = rememberNavController()
 
     Box(modifier = Modifier.fillMaxSize()) {
         Scaffold(
-            bottomBar = { BottomNavigation(navController = navController) }
+            bottomBar = { BottomNavigation(navController = bottomNavController) }
         ) { paddingValues ->
             NavHost(
-                navController = navController,
+                navController = bottomNavController,
                 startDestination = BottomNavItem.Shop.route,
                 modifier = Modifier.padding(paddingValues)
             ) {
-                composable(BottomNavItem.Shop.route) { ShopScreen() }
+                composable(BottomNavItem.Shop.route) { ShopScreen(rootNavController, bottomNavController) }
                 composable(BottomNavItem.Explore.route) { ExploreScreen() }
                 composable(BottomNavItem.Cart.route) { CartScreen() }
                 composable(BottomNavItem.Favourite.route) { FavouriteScreen() }

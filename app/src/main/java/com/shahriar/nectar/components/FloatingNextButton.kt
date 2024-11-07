@@ -24,7 +24,7 @@ fun FloatingNextButton(onClick: () -> Unit) {
             .background(Color.Transparent)
     ) {
         Image(
-            painter = painterResource(id = R.drawable.floatingnextbtn),
+            painter = painterResource(id = R.drawable.ic_arrow_btn),
             contentDescription = "Arrow Image",
             modifier = Modifier
                 .size(56.dp)

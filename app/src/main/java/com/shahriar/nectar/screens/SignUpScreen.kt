@@ -185,7 +185,7 @@ fun SignUpScreen(navController: NavController) {
                                     .matches()
                             ) {
                                 Icon(
-                                    painter = painterResource(id = R.drawable.verifiedmark), // Verified email icon
+                                    painter = painterResource(id = R.drawable.ic_verified), // Verified email icon
                                     contentDescription = "Email Verified",
                                     modifier = Modifier.size(20.dp),
                                     tint = Color.Unspecified // Ensure the icon retains its original color

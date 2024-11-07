@@ -1,4 +1,4 @@
-package com.shahriar.nectar.route
+package com.shahriar.nectar.components
 
 import android.util.Log
 import androidx.compose.foundation.background
@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.shahriar.nectar.R
+import com.shahriar.nectar.route.BottomNavItem
 
 
 @Composable
@@ -36,7 +37,6 @@ fun BottomNavigation(navController: NavController) {
     )
 
     val currentRoute = navController.currentBackStackEntryAsState().value?.destination?.route
-    Log.d("Route", currentRoute.toString())
     Box(
         modifier = Modifier
             .padding(start = 0.dp, end = 0.dp)
